@@ -1,0 +1,28 @@
+diff --git a/cmake/public/LoadHIP.cmake b/cmake/public/LoadHIP.cmake
+index fd5e97d3e1..a911e6c0c7 100644
+--- a/cmake/public/LoadHIP.cmake
++++ b/cmake/public/LoadHIP.cmake
+@@ -159,10 +159,13 @@ IF(HIP_FOUND)
+   set(miopen_DIR ${MIOPEN_PATH}/lib/cmake/miopen)
+   set(rocfft_DIR ${ROCFFT_PATH}/lib/cmake/rocfft)
+   set(hipsparse_DIR ${HIPSPARSE_PATH}/lib/cmake/hipsparse)
+-  set(rccl_DIR ${RCCL_PATH}/lib/cmake/rccl)
++  set(RCCL_DIR ${RCCL_PATH}/lib/cmake/rccl)
+   set(rocprim_DIR ${ROCPRIM_PATH}/lib/cmake/rocprim)
+   set(hipcub_DIR ${HIPCUB_PATH}/lib/cmake/hipcub)
+   set(rocthrust_DIR ${ROCTHRUST_PATH}/lib/cmake/rocthrust)
++  set(CMAKE_PREFIX_PATH ${ROCM_PATH}/lib/cmake ${CMAKE_PREFIX_PATH})
++  set(CMAKE_PREFIX_PATH ${HIP_PATH}/lib/cmake ${CMAKE_PREFIX_PATH})
++  set(CMAKE_PREFIX_PATH ${HCC_PATH}/lib/cmake ${CMAKE_PREFIX_PATH})
+
+   find_package_and_print_version(rocrand REQUIRED)
+   find_package_and_print_version(hiprand REQUIRED)
+@@ -170,7 +173,7 @@ IF(HIP_FOUND)
+   find_package_and_print_version(miopen REQUIRED)
+   find_package_and_print_version(rocfft REQUIRED)
+   find_package_and_print_version(hipsparse REQUIRED)
+-  find_package_and_print_version(rccl)
++  find_package_and_print_version(RCCL)
+   find_package_and_print_version(rocprim REQUIRED)
+   find_package_and_print_version(hipcub REQUIRED)
+   find_package_and_print_version(rocthrust REQUIRED)
